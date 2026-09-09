@@ -1,2 +1,2 @@
 files included
-1 indeex.hml
+1 index.html
