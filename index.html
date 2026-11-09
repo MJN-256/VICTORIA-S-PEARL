@@ -1,147 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title data-i18n="title">Victoria's Tours &amp; Travel</title>
-
-  <!-- Global page styles -->
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#f3ead9">
+<title data-i18n="title">Victoria's Tours &amp; Travel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style sheet.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js" defer></script>
+<script src="i18n.js" defer></script>
+<script src="script.js" defer></script>
 </head>
 <body>
-  <div class="page">
-    <header class="site-header">
-      <a class="brand" href="#home" aria-label="Victoria's Tours home">
-        <img src="Vicky logo. (VP).jpeg" alt="" />
-        <span>
-          <strong>Victoria's Tours</strong>
-          <small data-i18n="brand.tagline">Travel &amp; discover</small>
-        </span>
-      </a>
-      <nav class="nav-links" aria-label="Primary navigation" data-i18n-attr="aria-label" data-i18n="nav.label">
-        <a href="#destinations" data-i18n="nav.destinations">Destinations</a>
-        <a href="#services" data-i18n="nav.services">Services</a>
-        <a href="#about" data-i18n="nav.about">About</a>
-        <a class="nav-cta" href="#contact" data-i18n="nav.plan">Plan your trip</a>
-      </nav>
-      <label class="language-picker">
-        <span data-i18n="language.label">Language</span>
-        <select id="language-select" aria-label="Choose language" data-i18n-attr="aria-label" data-i18n="language.choose">
-          <option value="en">English</option>
-          <option value="fr">Français</option>
-          <option value="es">Español</option>
-          <option value="de">Deutsch</option>
-          <option value="tr">Türkçe</option>
-          <option value="sw">Kiswahili</option>
-          <option value="lg">Luganda</option>
-          <option value="ar">العربية</option>
-        </select>
-      </label>
-    </header>
+<canvas id="stage" aria-hidden="true"></canvas>
+<header class="top">
+  <a class="brand" href="#home" aria-label="Victoria's Tours home"><img src="Vicky logo. (VP).jpeg" alt=""><span><strong>Victoria's Tours</strong><small data-i18n="brand.tagline">Travel &amp; discover</small></span></a>
+  <nav aria-label="Primary navigation" data-i18n-attr="aria-label" data-i18n="nav.label">
+    <a href="#services" data-i18n="nav.services">Services</a>
+    <a href="#destinations" data-i18n="nav.destinations">Destinations</a>
+    <a href="#about" data-i18n="nav.about">About</a>
+    <a class="cta" href="#contact" data-i18n="nav.plan">Plan your trip</a>
+  </nav>
+  <label class="lang"><span class="sr" data-i18n="language.label">Language</span>
+    <select id="language-select" aria-label="Choose language" data-i18n-attr="aria-label" data-i18n="language.choose">
+      <option value="en">English</option><option value="fr">Français</option><option value="es">Español</option><option value="de">Deutsch</option><option value="tr">Türkçe</option><option value="sw">Kiswahili</option><option value="lg">Luganda</option><option value="ar">العربية</option>
+    </select></label>
+</header>
+<main>
+  <section class="hero" id="home">
+    <div class="copy">
+      <p class="eyebrow" data-i18n="hero.eyebrow">YOUR NEXT ADVENTURE STARTS HERE</p>
+      <h1><span data-i18n="hero.title">Discover the beauty of Uganda</span> <em data-i18n="hero.titleAccent">and beyond.</em></h1>
+      <p class="lead" data-i18n="hero.description">Hand-picked family trips, local adventures, and unforgettable travel experiences. Find your perfect escape with friendly local experts.</p>
+      <div class="actions"><a class="btn" href="#contact"><span data-i18n="nav.plan">Plan your trip</span> →</a><a class="ghost" href="#destinations" data-i18n="hero.explore">Explore destinations</a></div>
+      <p class="note">✦ <strong data-i18n="hero.noteTitle">Travel made personal</strong> — <span data-i18n="hero.note">Memorable journeys, thoughtfully planned.</span></p>
+    </div>
+    <figure class="postcard">
+      <img src="data/water falls.jpg" alt="Waterfall surrounded by Uganda's lush landscape" data-i18n-attr="alt" data-i18n="images.hero">
+      <figcaption><span data-i18n="hero.caption">Find your wild</span><strong data-i18n="hero.captionTitle">Uganda is waiting</strong></figcaption>
+    </figure>
+  </section>
 
-    <main>
-      <section class="hero" id="home">
-        <div class="hero-copy">
-          <p class="eyebrow" data-i18n="hero.eyebrow">YOUR NEXT ADVENTURE STARTS HERE</p>
-          <h1><span data-i18n="hero.title">Discover the beauty of Uganda</span> <span class="hero-title-accent" data-i18n="hero.titleAccent">and beyond.</span></h1>
-          <p data-i18n="hero.description">Hand-picked family trips, local adventures, and unforgettable travel experiences. Find your perfect escape with friendly local experts.</p>
+  <section id="services" class="block">
+    <div class="head"><p class="eyebrow" data-i18n="services.eyebrow">TRAVEL YOUR WAY</p><h2 data-i18n="services.title">Experiences for every kind of traveler</h2></div>
+    <div class="acc">
+      <article class="panel"><img src="data/accomodation.webp" alt="A welcoming place to stay on your trip" data-i18n-attr="alt" data-i18n="images.stay"><div class="pc"><span class="n">01</span><h3 data-i18n="services.family">Family tours</h3><p data-i18n="services.familyText">Easy, comfortable getaways with activities and stays the whole family can enjoy.</p></div></article>
+      <article class="panel"><img src="data/food.jpg" alt="A local meal served during a cultural trip" data-i18n-attr="alt" data-i18n="images.food"><div class="pc"><span class="n">02</span><h3 data-i18n="services.cultural">Cultural getaways</h3><p data-i18n="services.culturalText">Meet local communities, discover traditions, and enjoy authentic regional cuisine.</p></div></article>
+      <article class="panel"><img src="data/elephat 1.avif" alt="An elephant on safari" data-i18n-attr="alt" data-i18n="images.elephant"><div class="pc"><span class="n">03</span><h3 data-i18n="services.adventure">Adventure escapes</h3><p data-i18n="services.adventureText">Explore wildlife, scenic trails, and remarkable landscapes with local guides.</p></div></article>
+    </div>
+  </section>
 
-          <div class="hero-actions">
-            <a class="button-primary" href="#contact"><span data-i18n="nav.plan">Plan your trip</span> <span aria-hidden="true">→</span></a>
-            <a class="button-secondary" href="#destinations" data-i18n="hero.explore">Explore destinations</a>
-          </div>
-          <div class="hero-note">
-            <span class="hero-note-mark" aria-hidden="true">✦</span>
-            <span><strong data-i18n="hero.noteTitle">Travel made personal</strong><br /><span data-i18n="hero.note">Memorable journeys, thoughtfully planned.</span></span>
-          </div>
-        </div>
+  <section id="destinations" class="block">
+    <div class="head"><p class="eyebrow" data-i18n="destinations.eyebrow">PLACES TO FALL IN LOVE WITH</p><h2 data-i18n="destinations.title">Featured destinations</h2></div>
+    <div class="strip" data-dir="l"><div class="track">
+      <article class="sc"><img src="data/tourists.avif" alt="Travelers enjoying a scenic destination" data-i18n-attr="alt" data-i18n="images.travelers" draggable="false"><div class="cc"><p class="loc" data-i18n="destinations.lakeCategory">WATER &amp; ISLANDS</p><h3>Lake Victoria</h3><p data-i18n="destinations.lakeText">Slow down by the water, take a boat ride, and catch a beautiful East African sunset.</p></div></article>
+      <article class="sc"><img src="data/gorilla.2.avif" alt="Mountain gorilla in a forest habitat" data-i18n-attr="alt" data-i18n="images.gorilla" draggable="false"><div class="cc"><p class="loc" data-i18n="destinations.wildlifeCategory">WILDLIFE &amp; NATURE</p><h3>Mgahinga</h3><p data-i18n="destinations.wildlifeText">Discover volcanic trails, forest scenery, and unforgettable gorilla encounters.</p></div></article>
+      <article class="sc"><img src="data/water falls...jpg" alt="Water cascading through a green landscape" data-i18n-attr="alt" data-i18n="images.water" draggable="false"><div class="cc"><p class="loc" data-i18n="destinations.cityCategory">CITY &amp; CULTURE</p><h3>Kampala &amp; beyond</h3><p data-i18n="destinations.cityText">Explore vibrant markets, historic landmarks, and nearby natural escapes.</p></div></article>
+    </div></div>
+  </section>
 
-        <div class="hero-image">
-          <img src="data/water falls.jpg" alt="Waterfall surrounded by Uganda's lush landscape" data-i18n-attr="alt" data-i18n="images.hero" />
-          <div class="image-caption"><span data-i18n="hero.caption">Find your wild</span><strong data-i18n="hero.captionTitle">Uganda is waiting</strong></div>
-        </div>
-      </section>
+  <section class="block" aria-label="Scenes from our adventures" data-i18n-attr="aria-label" data-i18n="gallery.label">
+    <div class="head"><p class="eyebrow" data-i18n="gallery.eyebrow">A GLIMPSE OF THE JOURNEY</p><h2 data-i18n="gallery.title">More to explore</h2><p class="sub" data-i18n="gallery.description">Wildlife, waterfalls, and moments worth remembering.</p></div>
+    <div class="strip gal" data-dir="r" aria-label="Travel photos" data-i18n-attr="aria-label" data-i18n="gallery.slideshow"><div class="track">
+      <img class="gi" src="data/lion 1.avif" alt="Lion resting in the wild" data-i18n-attr="alt" data-i18n="images.lion1" draggable="false">
+      <img class="gi" src="data/lion 2.avif" alt="Lion in its natural habitat" data-i18n-attr="alt" data-i18n="images.lion2" draggable="false">
+      <img class="gi" src="data/zebra 1.webp" alt="Zebras on safari" data-i18n-attr="alt" data-i18n="images.zebras" draggable="false">
+      <img class="gi" src="data/falls.jpg" alt="A beautiful waterfall" data-i18n-attr="alt" data-i18n="images.falls" draggable="false">
+      <img class="gi" src="data/hipopotamus.avif" alt="Hippopotamus in the water" data-i18n-attr="alt" data-i18n="images.hippo" draggable="false">
+      <img class="gi" src="data/accomodation.webp" alt="Comfortable hotel accommodation" data-i18n-attr="alt" data-i18n="images.hotel" draggable="false">
+    </div></div>
+  </section>
 
-      <section id="services" class="content-section">
-        <div class="section-heading">
-          <p class="eyebrow" data-i18n="services.eyebrow">TRAVEL YOUR WAY</p>
-          <h2 class="section-title" data-i18n="services.title">Experiences for every kind of traveler</h2>
-        </div>
-        <div class="feature-grid">
-          <article class="feature-card">
-            <img src="data/accomodation compound.avif" alt="A welcoming place to stay on your trip" data-i18n-attr="alt" data-i18n="images.stay" loading="lazy" />
-            <div class="feature-copy"><h3 data-i18n="services.family">Family tours</h3><p data-i18n="services.familyText">Easy, comfortable getaways with activities and stays the whole family can enjoy.</p></div>
-          </article>
-          <article class="feature-card">
-            <img src="data/food.jpg" alt="A local meal served during a cultural trip" data-i18n-attr="alt" data-i18n="images.food" loading="lazy" />
-            <div class="feature-copy"><h3 data-i18n="services.cultural">Cultural getaways</h3><p data-i18n="services.culturalText">Meet local communities, discover traditions, and enjoy authentic regional cuisine.</p></div>
-          </article>
-          <article class="feature-card">
-            <img src="data/elephat 1.avif" alt="An elephant on safari" data-i18n-attr="alt" data-i18n="images.elephant" loading="lazy" />
-            <div class="feature-copy"><h3 data-i18n="services.adventure">Adventure escapes</h3><p data-i18n="services.adventureText">Explore wildlife, scenic trails, and remarkable landscapes with local guides.</p></div>
-          </article>
-        </div>
-      </section>
-
-      <section id="destinations" class="content-section destinations-section">
-        <div class="section-heading">
-          <p class="eyebrow" data-i18n="destinations.eyebrow">PLACES TO FALL IN LOVE WITH</p>
-          <h2 class="section-title" data-i18n="destinations.title">Featured destinations</h2>
-        </div>
-        <div class="cards-grid">
-          <article class="info-card">
-            <img src="data/tourists.avif" alt="Travelers enjoying a scenic destination" data-i18n-attr="alt" data-i18n="images.travelers" loading="lazy" />
-            <div class="card-copy"><p class="card-location" data-i18n="destinations.lakeCategory">WATER &amp; ISLANDS</p><h3>Lake Victoria</h3><p data-i18n="destinations.lakeText">Slow down by the water, take a boat ride, and catch a beautiful East African sunset.</p></div>
-          </article>
-          <article class="info-card">
-            <img src="data/gorilla.2.avif" alt="Mountain gorilla in a forest habitat" data-i18n-attr="alt" data-i18n="images.gorilla" loading="lazy" />
-            <div class="card-copy"><p class="card-location" data-i18n="destinations.wildlifeCategory">WILDLIFE &amp; NATURE</p><h3>Mgahinga</h3><p data-i18n="destinations.wildlifeText">Discover volcanic trails, forest scenery, and unforgettable gorilla encounters.</p></div>
-          </article>
-          <article class="info-card">
-            <img src="data/water falls...jpg" alt="Water cascading through a green landscape" data-i18n-attr="alt" data-i18n="images.water" loading="lazy" />
-            <div class="card-copy"><p class="card-location" data-i18n="destinations.cityCategory">CITY &amp; CULTURE</p><h3>Kampala &amp; beyond</h3><p data-i18n="destinations.cityText">Explore vibrant markets, historic landmarks, and nearby natural escapes.</p></div>
-          </article>
-        </div>
-      </section>
-
-      <section class="gallery-section" aria-label="Scenes from our adventures" data-i18n-attr="aria-label" data-i18n="gallery.label">
-        <div class="gallery-heading"><div><p class="eyebrow" data-i18n="gallery.eyebrow">A GLIMPSE OF THE JOURNEY</p><h2 class="section-title" data-i18n="gallery.title">More to explore</h2></div><p data-i18n="gallery.description">Wildlife, waterfalls, and moments worth remembering.</p></div>
-        <div class="slideshow" aria-label="Automatically changing travel photos" data-i18n-attr="aria-label" data-i18n="gallery.slideshow">
-          <img src="data/lion 1.avif" alt="Lion resting in the wild" data-i18n-attr="alt" data-i18n="images.lion1" />
-          <img src="data/lion 2.avif" alt="Lion in its natural habitat" data-i18n-attr="alt" data-i18n="images.lion2" />
-          <img src="data/zebra 1.webp" alt="Zebras on safari" data-i18n-attr="alt" data-i18n="images.zebras" />
-          <img src="data/falls.jpg" alt="A beautiful waterfall" data-i18n-attr="alt" data-i18n="images.falls" />
-          <img src="data/hipopotamus.avif" alt="Hippopotamus in the water" data-i18n-attr="alt" data-i18n="images.hippo" />
-          <img src="data/hotel room.avif" alt="Comfortable hotel accommodation" data-i18n-attr="alt" data-i18n="images.hotel" />
-        </div>
-      </section>
-
-      <section id="about" class="info-section">
-        <div class="about-copy">
-          <p class="eyebrow" data-i18n="about.eyebrow">LOCAL KNOWLEDGE, PERSONAL SERVICE</p>
-          <h2 class="section-title" data-i18n="about.title">Travel with people who know the way</h2>
-          <p data-i18n="about.text1">Victoria's Tours &amp; Travel is a local travel agency based near Gayaza along Nansana Road. We specialize in guided excursions, family trips, and custom travel packages that make planning easy and enjoyable.</p>
-          <p data-i18n="about.text2">Our goal is to provide safe, memorable journeys with friendly support from booking to return. Reach out anytime for itinerary ideas and service updates.</p>
-        </div>
-        <aside id="contact" class="contact-card">
-          <p class="eyebrow" data-i18n="contact.eyebrow">LET'S MAKE IT HAPPEN</p>
-          <h2 data-i18n="contact.title">Ready for your next adventure?</h2>
-          <p data-i18n="contact.text">Get in touch and we'll help you plan a trip to remember.</p>
-          <div class="contact-details">
-            <a href="tel:+905415235850">📞 +90 541 523 5850</a>
-            <a href="tel:+256747121484">📞 +256 747 121 484</a>
-            <a href="https://www.google.com/maps/search/?api=1&query=Eyup%20Istanbul" target="_blank" rel="noreferrer">📍 Eyup Istanbul</a>
-            <a href="mailto:bookings@victoria'stours.com">✉ bookings@victoria'stours.com</a>
-            <a href="https://wa.me/905415235850" target="_blank" rel="noreferrer" data-i18n="contact.whatsapp">💬 Message us on WhatsApp</a>
-          </div>
-        </aside>
-      </section>
-    </main>
-
-    <footer class="footer">
-      <span data-i18n="footer">© 2026 Victoria's Tours &amp; Travel. All rights reserved.</span>
-    </footer>
-  </div>
-  <script src="script.js"></script> 
+  <section id="about" class="block two">
+    <div class="about">
+      <p class="eyebrow" data-i18n="about.eyebrow">LOCAL KNOWLEDGE, PERSONAL SERVICE</p>
+      <h2 data-i18n="about.title">Travel with people who know the way</h2>
+      <p data-i18n="about.text1">Victoria's Tours &amp; Travel is a local travel agency based near Gayaza along Nansana Road. We specialize in guided excursions, family trips, and custom travel packages that make planning easy and enjoyable.</p>
+      <p data-i18n="about.text2">Our goal is to provide safe, memorable journeys with friendly support from booking to return. Reach out anytime for itinerary ideas and service updates.</p>
+    </div>
+    <aside id="contact" class="ticket">
+      <p class="eyebrow" data-i18n="contact.eyebrow">LET'S MAKE IT HAPPEN</p>
+      <h2 data-i18n="contact.title">Ready for your next adventure?</h2>
+      <p data-i18n="contact.text">Get in touch and we'll help you plan a trip to remember.</p>
+      <div class="det">
+        <a href="tel:+905415235850">📞 +90 541 523 5850</a>
+        <a href="tel:+256747121484">📞 +256 747 121 484</a>
+        <a href="https://www.google.com/maps/search/?api=1&query=Eyup%20Istanbul" target="_blank" rel="noreferrer">📍 Eyüp Istanbul</a>
+        <a href="mailto:bookings@victoria'stours.com">✉ bookings@victoria'stours.com</a>
+        <a href="https://wa.me/905415235850" target="_blank" rel="noreferrer" data-i18n="contact.whatsapp">💬 Message us on WhatsApp</a>
+      </div>
+    </aside>
+  </section>
+</main>
+<footer><span data-i18n="footer">© 2026 Victoria's Tours &amp; Travel. All rights reserved.</span></footer>
 </body>
 </html>

@@ -1,588 +1,79 @@
-const translations = {
-  en: {
-    "title": "Victoria's Tours & Travel",
-    "brand.tagline": "Travel & discover",
-    "language.label": "Language",
-    "language.choose": "Choose language",
-    "nav.label": "Primary navigation",
-    "nav.destinations": "Destinations",
-    "nav.services": "Services",
-    "nav.about": "About",
-    "nav.plan": "Plan your trip",
-    "hero.eyebrow": "YOUR NEXT ADVENTURE STARTS HERE",
-    "hero.title": "Discover the beauty of Uganda",
-    "hero.titleAccent": "and beyond.",
-    "hero.description": "Hand-picked family trips, local adventures, and unforgettable travel experiences. Find your perfect escape with friendly local experts.",
-    "hero.explore": "Explore destinations",
-    "hero.noteTitle": "Travel made personal",
-    "hero.note": "Memorable journeys, thoughtfully planned.",
-    "hero.caption": "Find your wild",
-    "hero.captionTitle": "Uganda is waiting",
-    "services.eyebrow": "TRAVEL YOUR WAY",
-    "services.title": "Experiences for every kind of traveler",
-    "services.family": "Family tours",
-    "services.familyText": "Easy, comfortable getaways with activities and stays the whole family can enjoy.",
-    "services.cultural": "Cultural getaways",
-    "services.culturalText": "Meet local communities, discover traditions, and enjoy authentic regional cuisine.",
-    "services.adventure": "Adventure escapes",
-    "services.adventureText": "Explore wildlife, scenic trails, and remarkable landscapes with local guides.",
-    "destinations.eyebrow": "PLACES TO FALL IN LOVE WITH",
-    "destinations.title": "Featured destinations",
-    "destinations.lakeCategory": "WATER & ISLANDS",
-    "destinations.lakeText": "Slow down by the water, take a boat ride, and catch a beautiful East African sunset.",
-    "destinations.wildlifeCategory": "WILDLIFE & NATURE",
-    "destinations.wildlifeText": "Discover volcanic trails, forest scenery, and unforgettable gorilla encounters.",
-    "destinations.cityCategory": "CITY & CULTURE",
-    "destinations.cityText": "Explore vibrant markets, historic landmarks, and nearby natural escapes.",
-    "gallery.label": "Scenes from our adventures",
-    "gallery.eyebrow": "A GLIMPSE OF THE JOURNEY",
-    "gallery.title": "More to explore",
-    "gallery.description": "Wildlife, waterfalls, and moments worth remembering.",
-    "gallery.slideshow": "Automatically changing travel photos",
-    "about.eyebrow": "LOCAL KNOWLEDGE, PERSONAL SERVICE",
-    "about.title": "Travel with people who know the way",
-    "about.text1": "Victoria's Tours & Travel is a local travel agency based near Gayaza along Nansana Road. We specialize in guided excursions, family trips, and custom travel packages that make planning easy and enjoyable.",
-    "about.text2": "Our goal is to provide safe, memorable journeys with friendly support from booking to return. Reach out anytime for itinerary ideas and service updates.",
-    "contact.eyebrow": "LET'S MAKE IT HAPPEN",
-    "contact.title": "Ready for your next adventure?",
-    "contact.text": "Get in touch and we'll help you plan a trip to remember.",
-    "contact.whatsapp": "💬 Message us on WhatsApp",
-    "footer": "© 2026 Victoria's Tours & Travel. All rights reserved.",
-    "images.hero": "Waterfall surrounded by Uganda's lush landscape",
-    "images.stay": "A welcoming place to stay on your trip",
-    "images.food": "A local meal served during a cultural trip",
-    "images.elephant": "An elephant on safari",
-    "images.travelers": "Travelers enjoying a scenic destination",
-    "images.gorilla": "Mountain gorilla in a forest habitat",
-    "images.water": "Water cascading through a green landscape",
-    "images.lion1": "Lion resting in the wild",
-    "images.lion2": "Lion in its natural habitat",
-    "images.zebras": "Zebras on safari",
-    "images.falls": "A beautiful waterfall",
-    "images.hippo": "Hippopotamus in the water",
-    "images.hotel": "Comfortable hotel accommodation"
-  },
-  fr: {
-    "title": "Victoria's Tours & Travel",
-    "brand.tagline": "Voyager et découvrir",
-    "language.label": "Langue",
-    "language.choose": "Choisir la langue",
-    "nav.label": "Navigation principale",
-    "nav.destinations": "Destinations",
-    "nav.services": "Services",
-    "nav.about": "À propos",
-    "nav.plan": "Planifiez votre voyage",
-    "hero.eyebrow": "VOTRE PROCHAINE AVENTURE COMMENCE ICI",
-    "hero.title": "Découvrez la beauté de l'Ouganda",
-    "hero.titleAccent": "et bien plus.",
-    "hero.description": "Des séjours en famille soigneusement choisis, des aventures locales et des voyages inoubliables. Trouvez votre escapade idéale avec nos experts locaux.",
-    "hero.explore": "Explorer les destinations",
-    "hero.noteTitle": "Un voyage personnalisé",
-    "hero.note": "Des voyages mémorables, soigneusement organisés.",
-    "hero.caption": "Retrouvez votre nature",
-    "hero.captionTitle": "L'Ouganda vous attend",
-    "services.eyebrow": "VOYAGEZ À VOTRE FAÇON",
-    "services.title": "Des expériences pour chaque voyageur",
-    "services.family": "Voyages en famille",
-    "services.familyText": "Des escapades faciles et confortables avec des activités et des hébergements pour toute la famille.",
-    "services.cultural": "Escapades culturelles",
-    "services.culturalText": "Rencontrez les communautés locales, découvrez leurs traditions et savourez la cuisine régionale.",
-    "services.adventure": "Escapades aventure",
-    "services.adventureText": "Explorez la faune, les sentiers pittoresques et des paysages remarquables avec des guides locaux.",
-    "destinations.eyebrow": "DES LIEUX À AIMER",
-    "destinations.title": "Destinations à découvrir",
-    "destinations.lakeCategory": "EAU ET ÎLES",
-    "destinations.lakeText": "Détendez-vous au bord de l'eau, faites une excursion en bateau et admirez un magnifique coucher de soleil est-africain.",
-    "destinations.wildlifeCategory": "FAUNE ET NATURE",
-    "destinations.wildlifeText": "Découvrez des sentiers volcaniques, des forêts et des rencontres inoubliables avec les gorilles.",
-    "destinations.cityCategory": "VILLE ET CULTURE",
-    "destinations.cityText": "Explorez des marchés animés, des sites historiques et des escapades nature à proximité.",
-    "gallery.label": "Scènes de nos aventures",
-    "gallery.eyebrow": "UN APERÇU DU VOYAGE",
-    "gallery.title": "Encore plus à explorer",
-    "gallery.description": "Faune, cascades et souvenirs inoubliables.",
-    "gallery.slideshow": "Photos de voyage qui changent automatiquement",
-    "about.eyebrow": "CONNAISSANCE LOCALE, SERVICE PERSONNALISÉ",
-    "about.title": "Voyagez avec ceux qui connaissent le chemin",
-    "about.text1": "Victoria's Tours & Travel est une agence locale située près de Gayaza, le long de Nansana Road. Nous organisons des excursions guidées, des voyages en famille et des séjours sur mesure pour rendre la préparation simple et agréable.",
-    "about.text2": "Notre objectif est de vous offrir des voyages sûrs et mémorables, avec un accompagnement chaleureux de la réservation jusqu'au retour. Contactez-nous pour des idées d'itinéraires et des informations sur nos services.",
-    "contact.eyebrow": "DONNONS VIE À VOTRE PROJET",
-    "contact.title": "Prêt pour votre prochaine aventure ?",
-    "contact.text": "Contactez-nous et nous vous aiderons à organiser un voyage inoubliable.",
-    "contact.whatsapp": "💬 Écrivez-nous sur WhatsApp",
-    "footer": "© 2026 Victoria's Tours & Travel. Tous droits réservés.",
-    "images.hero": "Cascade au cœur des paysages verdoyants de l'Ouganda",
-    "images.stay": "Un hébergement accueillant pour votre voyage",
-    "images.food": "Un repas local servi pendant une escapade culturelle",
-    "images.elephant": "Un éléphant en safari",
-    "images.travelers": "Des voyageurs profitant d'une belle destination",
-    "images.gorilla": "Gorille de montagne dans son habitat forestier",
-    "images.water": "Eau en cascade dans un paysage verdoyant",
-    "images.lion1": "Lion au repos dans la nature",
-    "images.lion2": "Lion dans son habitat naturel",
-    "images.zebras": "Zèbres en safari",
-    "images.falls": "Une magnifique cascade",
-    "images.hippo": "Hippopotame dans l'eau",
-    "images.hotel": "Hébergement confortable à l'hôtel"
-  },
-  es: {
-    "title": "Victoria's Tours & Travel",
-    "brand.tagline": "Viaja y descubre",
-    "language.label": "Idioma",
-    "language.choose": "Elegir idioma",
-    "nav.label": "Navegación principal",
-    "nav.destinations": "Destinos",
-    "nav.services": "Servicios",
-    "nav.about": "Acerca de",
-    "nav.plan": "Planifica tu viaje",
-    "hero.eyebrow": "TU PRÓXIMA AVENTURA EMPIEZA AQUÍ",
-    "hero.title": "Descubre la belleza de Uganda",
-    "hero.titleAccent": "y mucho más.",
-    "hero.description": "Viajes familiares seleccionados, aventuras locales y experiencias inolvidables. Encuentra tu escapada ideal con expertos locales.",
-    "hero.explore": "Explorar destinos",
-    "hero.noteTitle": "Viajes a tu medida",
-    "hero.note": "Viajes memorables, cuidadosamente planificados.",
-    "hero.caption": "Encuentra tu lado salvaje",
-    "hero.captionTitle": "Uganda te espera",
-    "services.eyebrow": "VIAJA A TU MANERA",
-    "services.title": "Experiencias para cada tipo de viajero",
-    "services.family": "Viajes familiares",
-    "services.familyText": "Escapadas cómodas y sencillas, con actividades y alojamientos para toda la familia.",
-    "services.cultural": "Escapadas culturales",
-    "services.culturalText": "Conoce comunidades locales, descubre sus tradiciones y disfruta de la auténtica gastronomía regional.",
-    "services.adventure": "Aventuras inolvidables",
-    "services.adventureText": "Explora la fauna, senderos pintorescos y paisajes extraordinarios con guías locales.",
-    "destinations.eyebrow": "LUGARES QUE ENAMORAN",
-    "destinations.title": "Destinos destacados",
-    "destinations.lakeCategory": "AGUA E ISLAS",
-    "destinations.lakeText": "Relájate junto al agua, da un paseo en barco y disfruta de una hermosa puesta de sol en África Oriental.",
-    "destinations.wildlifeCategory": "FAUNA Y NATURALEZA",
-    "destinations.wildlifeText": "Descubre senderos volcánicos, paisajes forestales y encuentros inolvidables con gorilas.",
-    "destinations.cityCategory": "CIUDAD Y CULTURA",
-    "destinations.cityText": "Explora mercados animados, lugares históricos y escapadas naturales cercanas.",
-    "gallery.label": "Imágenes de nuestras aventuras",
-    "gallery.eyebrow": "UN VISTAZO AL VIAJE",
-    "gallery.title": "Mucho más por descubrir",
-    "gallery.description": "Fauna, cascadas y momentos inolvidables.",
-    "gallery.slideshow": "Fotos de viaje que cambian automáticamente",
-    "about.eyebrow": "CONOCIMIENTO LOCAL, ATENCIÓN PERSONAL",
-    "about.title": "Viaja con quienes conocen el camino",
-    "about.text1": "Victoria's Tours & Travel es una agencia local cerca de Gayaza, junto a Nansana Road. Nos especializamos en excursiones guiadas, viajes familiares y paquetes personalizados para que planificar sea fácil y agradable.",
-    "about.text2": "Nuestro objetivo es ofrecer viajes seguros e inolvidables, con atención cercana desde la reserva hasta el regreso. Escríbenos cuando quieras para recibir ideas de itinerarios e información sobre nuestros servicios.",
-    "contact.eyebrow": "HAGÁMOSLO REALIDAD",
-    "contact.title": "¿Listo para tu próxima aventura?",
-    "contact.text": "Ponte en contacto y te ayudaremos a planificar un viaje inolvidable.",
-    "contact.whatsapp": "💬 Escríbenos por WhatsApp",
-    "footer": "© 2026 Victoria's Tours & Travel. Todos los derechos reservados.",
-    "images.hero": "Cascada rodeada del exuberante paisaje de Uganda",
-    "images.stay": "Un alojamiento acogedor para tu viaje",
-    "images.food": "Comida local servida durante un viaje cultural",
-    "images.elephant": "Un elefante de safari",
-    "images.travelers": "Viajeros disfrutando de un destino pintoresco",
-    "images.gorilla": "Gorila de montaña en un hábitat forestal",
-    "images.water": "Agua cayendo en un paisaje verde",
-    "images.lion1": "León descansando en libertad",
-    "images.lion2": "León en su hábitat natural",
-    "images.zebras": "Cebras de safari",
-    "images.falls": "Una hermosa cascada",
-    "images.hippo": "Hipopótamo en el agua",
-    "images.hotel": "Alojamiento cómodo en un hotel"
-  },
-  de: {
-    "title": "Victoria's Tours & Travel",
-    "brand.tagline": "Reisen und entdecken",
-    "language.label": "Sprache",
-    "language.choose": "Sprache auswählen",
-    "nav.label": "Hauptnavigation",
-    "nav.destinations": "Reiseziele",
-    "nav.services": "Angebote",
-    "nav.about": "Über uns",
-    "nav.plan": "Reise planen",
-    "hero.eyebrow": "IHR NÄCHSTES ABENTEUER BEGINNT HIER",
-    "hero.title": "Entdecken Sie Ugandas Schönheit",
-    "hero.titleAccent": "und noch viel mehr.",
-    "hero.description": "Sorgfältig ausgewählte Familienreisen, lokale Abenteuer und unvergessliche Erlebnisse. Finden Sie mit unseren freundlichen Experten vor Ort Ihren perfekten Urlaub.",
-    "hero.explore": "Reiseziele entdecken",
-    "hero.noteTitle": "Reisen ganz persönlich",
-    "hero.note": "Unvergessliche Reisen, mit Sorgfalt geplant.",
-    "hero.caption": "Entdecken Sie die Wildnis",
-    "hero.captionTitle": "Uganda erwartet Sie",
-    "services.eyebrow": "REISEN NACH IHREN WÜNSCHEN",
-    "services.title": "Erlebnisse für jeden Reisetyp",
-    "services.family": "Familienreisen",
-    "services.familyText": "Entspannte, komfortable Ausflüge mit Aktivitäten und Unterkünften für die ganze Familie.",
-    "services.cultural": "Kulturreisen",
-    "services.culturalText": "Lernen Sie lokale Gemeinschaften kennen, entdecken Sie Traditionen und genießen Sie regionale Küche.",
-    "services.adventure": "Abenteuerreisen",
-    "services.adventureText": "Entdecken Sie mit lokalen Guides Tiere, schöne Wanderwege und beeindruckende Landschaften.",
-    "destinations.eyebrow": "ORTE ZUM VERLIEBEN",
-    "destinations.title": "Ausgewählte Reiseziele",
-    "destinations.lakeCategory": "WASSER UND INSELN",
-    "destinations.lakeText": "Entspannen Sie am Wasser, machen Sie eine Bootsfahrt und genießen Sie einen wunderschönen Sonnenuntergang in Ostafrika.",
-    "destinations.wildlifeCategory": "TIERE UND NATUR",
-    "destinations.wildlifeText": "Entdecken Sie Vulkanpfade, Waldlandschaften und unvergessliche Begegnungen mit Gorillas.",
-    "destinations.cityCategory": "STADT UND KULTUR",
-    "destinations.cityText": "Erkunden Sie lebhafte Märkte, historische Sehenswürdigkeiten und nahegelegene Naturziele.",
-    "gallery.label": "Eindrücke unserer Abenteuer",
-    "gallery.eyebrow": "EIN BLICK AUF DIE REISE",
-    "gallery.title": "Noch mehr entdecken",
-    "gallery.description": "Tiere, Wasserfälle und unvergessliche Momente.",
-    "gallery.slideshow": "Automatisch wechselnde Reisefotos",
-    "about.eyebrow": "REGIONALE KENNTNISSE, PERSÖNLICHER SERVICE",
-    "about.title": "Reisen Sie mit Menschen, die sich auskennen",
-    "about.text1": "Victoria's Tours & Travel ist ein lokales Reisebüro bei Gayaza an der Nansana Road. Wir organisieren geführte Ausflüge, Familienreisen und individuelle Reisepakete, die die Planung einfach und angenehm machen.",
-    "about.text2": "Unser Ziel sind sichere, unvergessliche Reisen mit persönlicher Betreuung von der Buchung bis zur Rückkehr. Kontaktieren Sie uns jederzeit für Routenvorschläge und aktuelle Informationen.",
-    "contact.eyebrow": "MACHEN WIR ES MÖGLICH",
-    "contact.title": "Bereit für Ihr nächstes Abenteuer?",
-    "contact.text": "Melden Sie sich bei uns. Wir helfen Ihnen, eine unvergessliche Reise zu planen.",
-    "contact.whatsapp": "💬 Schreiben Sie uns auf WhatsApp",
-    "footer": "© 2026 Victoria's Tours & Travel. Alle Rechte vorbehalten.",
-    "images.hero": "Wasserfall in Ugandas üppig grüner Landschaft",
-    "images.stay": "Eine einladende Unterkunft für Ihre Reise",
-    "images.food": "Ein lokales Gericht auf einer Kulturreise",
-    "images.elephant": "Ein Elefant auf Safari",
-    "images.travelers": "Reisende genießen ein malerisches Reiseziel",
-    "images.gorilla": "Berggorilla in seinem Waldlebensraum",
-    "images.water": "Wasserfall in einer grünen Landschaft",
-    "images.lion1": "Löwe ruht sich in freier Natur aus",
-    "images.lion2": "Löwe in seinem natürlichen Lebensraum",
-    "images.zebras": "Zebras auf Safari",
-    "images.falls": "Ein wunderschöner Wasserfall",
-    "images.hippo": "Flusspferd im Wasser",
-    "images.hotel": "Komfortable Hotelunterkunft"
-  },
-  tr: {
-    "title": "Victoria's Tours & Travel",
-    "brand.tagline": "Seyahat edin ve keşfedin",
-    "language.label": "Dil",
-    "language.choose": "Dil seçin",
-    "nav.label": "Ana menü",
-    "nav.destinations": "Destinasyonlar",
-    "nav.services": "Hizmetler",
-    "nav.about": "Hakkımızda",
-    "nav.plan": "Seyahatinizi planlayın",
-    "hero.eyebrow": "BİR SONRAKİ MACERANIZ BURADA BAŞLIYOR",
-    "hero.title": "Uganda'nın güzelliklerini keşfedin",
-    "hero.titleAccent": "ve çok daha fazlasını.",
-    "hero.description": "Özenle seçilmiş aile gezileri, yerel maceralar ve unutulmaz seyahat deneyimleri. Yerel uzmanlarımızla size en uygun kaçamağı bulun.",
-    "hero.explore": "Destinasyonları keşfedin",
-    "hero.noteTitle": "Size özel seyahat",
-    "hero.note": "Özenle planlanmış, unutulmaz yolculuklar.",
-    "hero.caption": "Doğayı keşfedin",
-    "hero.captionTitle": "Uganda sizi bekliyor",
-    "services.eyebrow": "KENDİ TARZINIZDA SEYAHAT EDİN",
-    "services.title": "Her gezgine uygun deneyimler",
-    "services.family": "Aile turları",
-    "services.familyText": "Tüm ailenin keyif alabileceği etkinlikler ve konaklama seçenekleriyle rahat kaçamaklar.",
-    "services.cultural": "Kültür gezileri",
-    "services.culturalText": "Yerel topluluklarla tanışın, gelenekleri keşfedin ve yöresel lezzetlerin tadını çıkarın.",
-    "services.adventure": "Macera gezileri",
-    "services.adventureText": "Yerel rehberlerle vahşi yaşamı, manzaralı rotaları ve etkileyici doğayı keşfedin.",
-    "destinations.eyebrow": "GÖNLÜNÜZÜ FETHEDECEK YERLER",
-    "destinations.title": "Öne çıkan destinasyonlar",
-    "destinations.lakeCategory": "GÖLLER VE ADALAR",
-    "destinations.lakeText": "Suyun kenarında dinlenin, tekne turuna çıkın ve Doğu Afrika'da güzel bir gün batımının keyfini çıkarın.",
-    "destinations.wildlifeCategory": "YABAN HAYATI VE DOĞA",
-    "destinations.wildlifeText": "Volkanik patikaları, orman manzaralarını ve unutulmaz goril karşılaşmalarını keşfedin.",
-    "destinations.cityCategory": "ŞEHİR VE KÜLTÜR",
-    "destinations.cityText": "Canlı pazarları, tarihi yerleri ve yakındaki doğal güzellikleri keşfedin.",
-    "gallery.label": "Maceralarımızdan kareler",
-    "gallery.eyebrow": "YOLCULUĞA KISA BİR BAKIŞ",
-    "gallery.title": "Keşfedilecek daha çok şey",
-    "gallery.description": "Yaban hayatı, şelaleler ve unutulmaz anlar.",
-    "gallery.slideshow": "Otomatik olarak değişen seyahat fotoğrafları",
-    "about.eyebrow": "YEREL BİLGİ, KİŞİYE ÖZEL HİZMET",
-    "about.title": "Yolu bilenlerle seyahat edin",
-    "about.text1": "Victoria's Tours & Travel, Nansana Yolu üzerinde Gayaza yakınlarında bulunan yerel bir seyahat acentesidir. Planlamayı kolay ve keyifli hâle getiren rehberli geziler, aile seyahatleri ve kişiye özel paketler sunuyoruz.",
-    "about.text2": "Amacımız, rezervasyondan dönüşe kadar güler yüzlü destekle güvenli ve unutulmaz yolculuklar sunmaktır. Gezi önerileri ve hizmet güncellemeleri için dilediğiniz zaman bize ulaşın.",
-    "contact.eyebrow": "HAYALİNİZİ GERÇEĞE DÖNÜŞTÜRELİM",
-    "contact.title": "Bir sonraki maceranıza hazır mısınız?",
-    "contact.text": "Bize ulaşın, unutulmaz bir gezi planlamanıza yardımcı olalım.",
-    "contact.whatsapp": "💬 WhatsApp'tan bize yazın",
-    "footer": "© 2026 Victoria's Tours & Travel. Tüm hakları saklıdır.",
-    "images.hero": "Uganda'nın yemyeşil doğasıyla çevrili şelale",
-    "images.stay": "Geziniz için sıcak ve davetkâr bir konaklama yeri",
-    "images.food": "Kültür gezisinde sunulan yöresel bir yemek",
-    "images.elephant": "Safaride bir fil",
-    "images.travelers": "Manzaralı bir destinasyonun keyfini çıkaran gezginler",
-    "images.gorilla": "Ormanında yaşayan dağ gorili",
-    "images.water": "Yeşil bir manzarada çağlayan su",
-    "images.lion1": "Doğada dinlenen aslan",
-    "images.lion2": "Doğal yaşam alanında aslan",
-    "images.zebras": "Safaride zebralar",
-    "images.falls": "Güzel bir şelale",
-    "images.hippo": "Suda bir su aygırı",
-    "images.hotel": "Konforlu otel konaklaması"
-  },
-  sw: {
-    "title": "Victoria's Tours & Travel",
-    "brand.tagline": "Safiri na ugundue",
-    "language.label": "Lugha",
-    "language.choose": "Chagua lugha",
-    "nav.label": "Urambazaji mkuu",
-    "nav.destinations": "Maeneo",
-    "nav.services": "Huduma",
-    "nav.about": "Kuhusu sisi",
-    "nav.plan": "Panga safari yako",
-    "hero.eyebrow": "ADVENTURE YAKO IJAYO INAANZA HAPA",
-    "hero.title": "Gundua uzuri wa Uganda",
-    "hero.titleAccent": "na kwingineko.",
-    "hero.description": "Safari za familia zilizochaguliwa kwa makini, matukio ya eneo hili na uzoefu wa kukumbukwa. Pata likizo inayokufaa kwa msaada wa wataalamu wetu wa eneo hili.",
-    "hero.explore": "Gundua maeneo",
-    "hero.noteTitle": "Safari inayokufaa",
-    "hero.note": "Safari za kukumbukwa, zilizopangwa kwa makini.",
-    "hero.caption": "Gundua pori",
-    "hero.captionTitle": "Uganda inakusubiri",
-    "services.eyebrow": "SAFIRI KWA NAMNA YAKO",
-    "services.title": "Uzoefu unaomfaa kila msafiri",
-    "services.family": "Ziara za familia",
-    "services.familyText": "Likizo rahisi na za starehe zenye shughuli na malazi yanayofurahiwa na familia nzima.",
-    "services.cultural": "Likizo za kitamaduni",
-    "services.culturalText": "Kutana na jamii za eneo hili, gundua mila na ufurahie vyakula halisi vya kikanda.",
-    "services.adventure": "Safari za kusisimua",
-    "services.adventureText": "Gundua wanyamapori, njia zenye mandhari nzuri na mazingira ya kipekee ukiwa na waongoza watalii wa eneo hili.",
-    "destinations.eyebrow": "MAENEO YA KUPENDA",
-    "destinations.title": "Maeneo maalum ya kutembelea",
-    "destinations.lakeCategory": "MAJI NA VISIWA",
-    "destinations.lakeText": "Pumzika kando ya maji, panda mashua na ufurahie machweo mazuri ya Afrika Mashariki.",
-    "destinations.wildlifeCategory": "WANYAMAPORI NA ASILI",
-    "destinations.wildlifeText": "Gundua njia za volkeno, mandhari ya misitu na kukutana na sokwe wa milimani.",
-    "destinations.cityCategory": "JIJI NA UTAMADUNI",
-    "destinations.cityText": "Tembelea masoko yenye shughuli nyingi, maeneo ya kihistoria na sehemu za asili zilizo karibu.",
-    "gallery.label": "Picha za matukio yetu",
-    "gallery.eyebrow": "MUHTASARI WA SAFARI",
-    "gallery.title": "Mengi zaidi ya kugundua",
-    "gallery.description": "Wanyamapori, maporomoko ya maji na kumbukumbu nzuri.",
-    "gallery.slideshow": "Picha za safari zinazobadilika zenyewe",
-    "about.eyebrow": "UJUZI WA ENEO HILI, HUDUMA BINAFSI",
-    "about.title": "Safiri na watu wanaojua njia",
-    "about.text1": "Victoria's Tours & Travel ni wakala wa safari wa eneo hili ulio karibu na Gayaza, kwenye Barabara ya Nansana. Tunapanga matembezi ya kuongozwa, safari za familia na vifurushi maalum ili kurahisisha kupanga safari.",
-    "about.text2": "Lengo letu ni kutoa safari salama na za kukumbukwa, pamoja na msaada rafiki kuanzia nafasi ya safari hadi kurudi. Wasiliana nasi wakati wowote kwa mawazo ya ratiba na taarifa za huduma.",
-    "contact.eyebrow": "TUFANYE ITIMIE",
-    "contact.title": "Uko tayari kwa adventure yako ijayo?",
-    "contact.text": "Wasiliana nasi na tutakusaidia kupanga safari ya kukumbukwa.",
-    "contact.whatsapp": "💬 Tutumie ujumbe WhatsApp",
-    "footer": "© 2026 Victoria's Tours & Travel. Haki zote zimehifadhiwa.",
-    "images.hero": "Maporomoko ya maji yaliyozungukwa na mandhari ya kijani ya Uganda",
-    "images.stay": "Mahali pazuri pa kukaa wakati wa safari yako",
-    "images.food": "Chakula cha eneo hili wakati wa safari ya kitamaduni",
-    "images.elephant": "Tembo akiwa safarini",
-    "images.travelers": "Wasafiri wakifurahia mandhari nzuri",
-    "images.gorilla": "Sokwe wa milimani katika makazi ya msitu",
-    "images.water": "Maji yakitiririka katika mandhari ya kijani",
-    "images.lion1": "Simba akipumzika porini",
-    "images.lion2": "Simba katika makazi yake ya asili",
-    "images.zebras": "Pundamilia safarini",
-    "images.falls": "Maporomoko mazuri ya maji",
-    "images.hippo": "Kiboko majini",
-    "images.hotel": "Malazi ya hoteli yenye starehe"
-  },
-  lg: {
-    "title": "Victoria's Tours & Travel",
-    "brand.tagline": "Tambula era ozuule",
-    "language.label": "Olulimi",
-    "language.choose": "Londa olulimi",
-    "nav.label": "Enny navegación enkulu",
-    "nav.destinations": "Ebifo",
-    "nav.services": "Empeereza",
-    "nav.about": "Ebikwata ku ffe",
-    "nav.plan": "Teekateeka olugendo lwo",
-    "hero.eyebrow": "OLUGENDO LWO OLW'OKUNYUMYA LUTANDIKIRA WANO",
-    "hero.title": "Zuula obulungi bwa Uganda",
-    "hero.titleAccent": "n'ebisingawo.",
-    "hero.description": "Enteekateeka z'amaka ezirondeddwa obulungi, eby'okukola mu kitundu n'eby'olugendo ebijjukirwa. Funa okuwummula okusinga okukusaanira ng'oyambibwako abakugu b'omu kitundu.",
-    "hero.explore": "Noonya ebifo",
-    "hero.noteTitle": "Olugendo olukukwatako",
-    "hero.note": "Engendo ezijjukirwa, ezitegekeddwa n'obwegendereza.",
-    "hero.caption": "Zuula obutonde",
-    "hero.captionTitle": "Uganda ekulindirira",
-    "services.eyebrow": "TAMBULA MU NGERI YO",
-    "services.title": "Eby'okukola ebisaanira buli mutambuze",
-    "services.family": "Engendo z'amaka",
-    "services.familyText": "Okuwummula okwangu era okunyuma, nga kuliko emirimu n'aw'okusula ebisanyusa amaka gonna.",
-    "services.cultural": "Okuwummula okw'eby'obuwangwa",
-    "services.culturalText": "Sisinkana abantu b'omu kitundu, manya empisa zaabwe era onyumirwe emmere ey'omu kitundu.",
-    "services.adventure": "Engendo ez'eby'okunyumya",
-    "services.adventureText": "Noonya ensolo, amakubo amalungi n'obutonde obw'enjawulo ng'olina abakulembeze b'omu kitundu.",
-    "destinations.eyebrow": "EBIFO EBIWUNYISA",
-    "destinations.title": "Ebifo ebirungi eby'okulambula",
-    "destinations.lakeCategory": "AMAZZI N'EBIZINGA",
-    "destinations.lakeText": "Wummulira ku mazzi, weerabire mu lyato era onyumirwe enjuba ng'egwa mu buvanjuba bwa Afrika.",
-    "destinations.wildlifeCategory": "ENSOLO N'OBUTONDE",
-    "destinations.wildlifeText": "Zuula amakubo g'ensozi ez'omuliro, ebibira n'okusisinkana enkuyege z'omu nsozi.",
-    "destinations.cityCategory": "EKIBUGA N'OBUWANGWA",
-    "destinations.cityText": "Lambula obutale obujjudde abantu, ebifo eby'edda n'obutonde obuli okumpi.",
-    "gallery.label": "Ebifaananyi by'engendo zaffe",
-    "gallery.eyebrow": "AKAFANANYI K'OLUGENDO",
-    "gallery.title": "Waliwo ebirala eby'okulaba",
-    "gallery.description": "Ensolo, amasika n'ebiseera eby'okujjukira.",
-    "gallery.slideshow": "Ebifaananyi by'olugendo ebikyuka byokka",
-    "about.eyebrow": "OKUMANYA EKITUNDU, EMPEEREZA EY'ENJAWULO",
-    "about.title": "Tambula n'abamanyi ekkubo",
-    "about.text1": "Victoria's Tours & Travel kitongole kya ngendo ekiri okumpi ne Gayaza ku Nansana Road. Tutegeka okulambula n'abakulembeze, engendo z'amaka n'enteekateeka ez'enjawulo okusobola okwanguyiza okuteekateeka.",
-    "about.text2": "Ekigendererwa kyaffe kwe kuwa engendo ez'obukuumi era ezijjukirwa, n'obuyambi obulungi okuva ku kusaba okutuusa ng'ozzeeyo. Tukubire essimu ofune amagezi ag'enteekateeka n'amawulire g'empeereza.",
-    "contact.eyebrow": "KA TUKIKOLE",
-    "contact.title": "Otegefu okutandika olugendo olulala?",
-    "contact.text": "Tuukirira, tukuyambe okutegeka olugendo lw'ojja okujjukira.",
-    "contact.whatsapp": "💬 Tuweereze obubaka ku WhatsApp",
-    "footer": "© 2026 Victoria's Tours & Travel. Eddembe lyonna likuumibwa.",
-    "images.hero": "Amasika agakutte mu butonde obulungi obwa Uganda",
-    "images.stay": "Ekifo ekirungi eky'okusulamu ku lugendo lwo",
-    "images.food": "Emmere y'omu kitundu eweerezebwa ku lugendo lw'eby'obuwangwa",
-    "images.elephant": "Enjovu ku safari",
-    "images.travelers": "Abatambuze nga banyumirwa ekifo ekirungi",
-    "images.gorilla": "Enkuyege ey'omu nsozi mu kibira",
-    "images.water": "Amazzi nga gakulukuta mu butonde obuddugavu",
-    "images.lion1": "Empologoma ewummudde mu nsiko",
-    "images.lion2": "Empologoma mu kifo kyayo eky'obutonde",
-    "images.zebras": "Embogo ku safari",
-    "images.falls": "Amasika amalungi",
-    "images.hippo": "Envubu mu mazzi",
-    "images.hotel": "Aw'okusula mu wooteeri awanyuma"
-  },
-  ar: {
-    "title": "Victoria's Tours & Travel",
-    "brand.tagline": "سافر واكتشف",
-    "language.label": "اللغة",
-    "language.choose": "اختر اللغة",
-    "nav.label": "التنقل الرئيسي",
-    "nav.destinations": "الوجهات",
-    "nav.services": "الخدمات",
-    "nav.about": "من نحن",
-    "nav.plan": "خطط لرحلتك",
-    "hero.eyebrow": "مغامرتك القادمة تبدأ من هنا",
-    "hero.title": "اكتشف جمال أوغندا",
-    "hero.titleAccent": "وما وراءها.",
-    "hero.description": "رحلات عائلية مختارة بعناية ومغامرات محلية وتجارب سفر لا تُنسى. اعثر على عطلتك المثالية بمساعدة خبرائنا المحليين.",
-    "hero.explore": "استكشف الوجهات",
-    "hero.noteTitle": "رحلات تناسبك",
-    "hero.note": "رحلات لا تُنسى، مخططة بعناية.",
-    "hero.caption": "اكتشف سحر الطبيعة",
-    "hero.captionTitle": "أوغندا بانتظارك",
-    "services.eyebrow": "سافر على طريقتك",
-    "services.title": "تجارب تناسب كل مسافر",
-    "services.family": "رحلات عائلية",
-    "services.familyText": "عطلات مريحة وسهلة مع أنشطة وإقامات تستمتع بها العائلة بأكملها.",
-    "services.cultural": "رحلات ثقافية",
-    "services.culturalText": "تعرّف على المجتمعات المحلية واكتشف التقاليد وتذوق المأكولات الإقليمية الأصيلة.",
-    "services.adventure": "مغامرات مميزة",
-    "services.adventureText": "استكشف الحياة البرية والمسارات الخلابة والمناظر الطبيعية المذهلة مع مرشدين محليين.",
-    "destinations.eyebrow": "أماكن تأسر القلوب",
-    "destinations.title": "وجهات مميزة",
-    "destinations.lakeCategory": "المياه والجزر",
-    "destinations.lakeText": "استرخِ بجانب الماء، واركب القارب، واستمتع بغروب شمس جميل في شرق أفريقيا.",
-    "destinations.wildlifeCategory": "الحياة البرية والطبيعة",
-    "destinations.wildlifeText": "اكتشف المسارات البركانية والمناظر الحرجية واللقاءات المذهلة مع الغوريلا.",
-    "destinations.cityCategory": "المدينة والثقافة",
-    "destinations.cityText": "استكشف الأسواق النابضة بالحياة والمعالم التاريخية والرحلات الطبيعية القريبة.",
-    "gallery.label": "مشاهد من مغامراتنا",
-    "gallery.eyebrow": "لمحة عن الرحلة",
-    "gallery.title": "المزيد لاستكشافه",
-    "gallery.description": "حياة برية وشلالات ولحظات لا تُنسى.",
-    "gallery.slideshow": "صور سفر تتغير تلقائياً",
-    "about.eyebrow": "معرفة محلية وخدمة شخصية",
-    "about.title": "سافر مع أشخاص يعرفون الطريق",
-    "about.text1": "Victoria's Tours & Travel وكالة سفر محلية بالقرب من غايازا على طريق نانسانا. نختص بالرحلات المصحوبة بمرشدين والرحلات العائلية والباقات المصممة حسب الطلب، لنجعل التخطيط سهلاً وممتعاً.",
-    "about.text2": "هدفنا تقديم رحلات آمنة لا تُنسى مع دعم ودود من الحجز حتى العودة. تواصل معنا في أي وقت للحصول على أفكار للرحلات وآخر أخبار خدماتنا.",
-    "contact.eyebrow": "لنحقق ذلك",
-    "contact.title": "هل أنت مستعد لمغامرتك القادمة؟",
-    "contact.text": "تواصل معنا وسنساعدك في التخطيط لرحلة لا تُنسى.",
-    "contact.whatsapp": "💬 راسلنا عبر واتساب",
-    "footer": "© 2026 Victoria's Tours & Travel. جميع الحقوق محفوظة.",
-    "images.hero": "شلال تحيط به المناظر الطبيعية الخضراء في أوغندا",
-    "images.stay": "مكان إقامة مريح ومرحب خلال رحلتك",
-    "images.food": "وجبة محلية تُقدم خلال رحلة ثقافية",
-    "images.elephant": "فيل في رحلة سفاري",
-    "images.travelers": "مسافرون يستمتعون بوجهة طبيعية خلابة",
-    "images.gorilla": "غوريلا جبلية في موطنها الحرجي",
-    "images.water": "مياه تتدفق وسط مناظر طبيعية خضراء",
-    "images.lion1": "أسد يستريح في البرية",
-    "images.lion2": "أسد في موطنه الطبيعي",
-    "images.zebras": "حُمُر وحشية في رحلة سفاري",
-    "images.falls": "شلال جميل",
-    "images.hippo": "فرس النهر في الماء",
-    "images.hotel": "إقامة فندقية مريحة"
-  }
-};
+const reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+document.querySelectorAll("img").forEach(i=>{const bad=()=>i.classList.add("x");i.addEventListener("error",bad);if(i.complete&&!i.naturalWidth)bad()});
 
-document.addEventListener('DOMContentLoaded', () => {
-  const languageSelect = document.querySelector('#language-select');
-  const supportedLanguages = Object.keys(translations);
-  const storageKey = 'victoria-tours-language';
+/* Drifting photo strips: slide by themselves, grab and fling with a finger or mouse */
+document.querySelectorAll(".strip").forEach(s=>{const tr=s.firstElementChild;
+ [...tr.children].forEach(n=>{const c=n.cloneNode(true);c.setAttribute("aria-hidden","true");tr.appendChild(c)});
+ let x=0,v=0,drag=false,lx=0,last=performance.now();const dir=s.dataset.dir==="r"?1:-1,sp=reduce?8:70;
+ s.addEventListener("pointerdown",e=>{drag=true;lx=e.clientX;s.setPointerCapture(e.pointerId)});
+ s.addEventListener("pointermove",e=>{if(drag){const d=e.clientX-lx;lx=e.clientX;x+=d;v=d*60}});
+ ["pointerup","pointercancel"].forEach(n=>s.addEventListener(n,()=>drag=false));
+ (function f(now){requestAnimationFrame(f);const dt=Math.min((now-last)/1000,.05);last=now;const h=tr.scrollWidth/2;
+  if(!drag){v+=(dir*sp-v)*Math.min(1,dt*2);x+=v*dt}
+  x=((x%h)+h)%h-h;tr.style.transform=`translate3d(${x}px,0,0)`})(last)});
 
-  const applyLanguage = (language) => {
-    const messages = translations[language] || translations.en;
-    document.documentElement.lang = language;
-    document.documentElement.dir = language === 'ar' ? 'rtl' : 'ltr';
+/* Service panels: open one by hover/tap, or they cycle on their own */
+(function(){const ac=document.querySelector(".acc");if(!ac)return;const ps=[...ac.children];let cur=0,hold=0;
+ const set=i=>{cur=i;ps.forEach((p,j)=>p.classList.toggle("on",j===i))};set(0);
+ ps.forEach((p,i)=>{p.tabIndex=0;["pointerenter","pointerdown","focus"].forEach(ev=>p.addEventListener(ev,()=>{set(i);hold=Date.now()+5000}))});
+ setInterval(()=>{if(Date.now()>hold)set((cur+1)%ps.length)},reduce?6000:3200)})();
 
-    document.querySelectorAll('[data-i18n]').forEach((element) => {
-      const translation = messages[element.dataset.i18n];
-      if (translation === undefined) {
-        return;
-      }
+/* WebGL world: a dotted world-map globe with flight routes out of Uganda */
+(function(){const cv=document.getElementById("stage"),T=window.THREE;if(!T||!cv)return;try{go()}catch(e){console.warn("3D off",e)}
+function go(){
+const R=new T.WebGLRenderer({canvas:cv,antialias:true,alpha:true});R.setClearColor(0,0);
+const S=new T.Scene(),C=new T.PerspectiveCamera(35,1,.1,50);C.position.z=7;
+S.add(new T.HemisphereLight(0xffffff,0xd8c7a6,.95));const dl=new T.DirectionalLight(0xffffff,.8);dl.position.set(-3,4,5);S.add(dl);
+const G=new T.Group();S.add(G);
+const ll=(la,lo,r)=>{const a=la*Math.PI/180,o=lo*Math.PI/180;return new T.Vector3(r*Math.cos(a)*Math.sin(o),r*Math.sin(a),r*Math.cos(a)*Math.cos(o))};
+G.add(new T.Mesh(new T.SphereGeometry(1,64,48),new T.MeshStandardMaterial({color:0xeaf2ee,roughness:.5})));
+G.add(new T.Mesh(new T.SphereGeometry(1.07,48,32),new T.MeshBasicMaterial({color:0xf4b36a,transparent:true,opacity:.3,side:T.BackSide})));
+const gp=[];for(let la=-60;la<=60;la+=30)for(let lo=0;lo<360;lo+=6)gp.push(ll(la,lo,1.002),ll(la,lo+6,1.002));
+for(let lo=0;lo<360;lo+=30)for(let la=-90;la<90;la+=6)gp.push(ll(la,lo,1.002),ll(la+6,lo,1.002));
+G.add(new T.LineSegments(new T.BufferGeometry().setFromPoints(gp),new T.LineBasicMaterial({color:0x1f5d4a,transparent:true,opacity:.14})));
 
-      const attribute = element.dataset.i18nAttr;
-      if (attribute) {
-        element.setAttribute(attribute, translation);
-      } else {
-        element.textContent = translation;
-      }
-    });
-  };
+/* coarse continent outlines [lon,lat] -> painted to a hidden canvas -> sampled into dots */
+const MAP=[
+[[-168,66],[-156,71],[-125,70],[-95,72],[-80,68],[-62,60],[-55,50],[-67,44],[-76,35],[-81,25],[-90,29],[-97,26],[-97,20],[-87,21],[-88,16],[-83,10],[-79,8],[-86,12],[-92,15],[-105,20],[-110,24],[-117,32],[-124,40],[-125,49],[-135,58],[-150,60],[-160,58]],
+[[-55,60],[-45,60],[-20,70],[-20,82],[-60,82],[-72,76]],
+[[-80,8],[-72,12],[-62,10],[-50,0],[-35,-6],[-40,-22],[-48,-28],[-58,-38],[-65,-42],[-68,-52],[-72,-52],[-74,-40],[-71,-20],[-81,-5]],
+[[-10,36],[-9,43],[-2,47],[-5,48],[3,51],[8,54],[10,57],[5,62],[15,69],[28,71],[45,68],[60,70],[80,73],[110,77],[140,72],[170,70],[180,66],[160,60],[155,50],[140,45],[135,35],[122,30],[120,22],[108,18],[106,10],[100,13],[100,2],[104,1],[98,8],[93,20],[88,22],[80,13],[77,8],[72,20],[67,25],[57,25],[59,22],[52,16],[43,12],[39,21],[35,29],[35,33],[30,36],[26,40],[22,37],[19,41],[13,45],[12,44],[8,44],[3,43],[-2,37]],
+[[-17,21],[-10,30],[-6,36],[10,37],[11,33],[20,32],[32,31],[33,28],[38,20],[43,12],[51,12],[40,-3],[40,-15],[35,-25],[32,-29],[26,-34],[18,-34],[12,-18],[13,-5],[9,3],[-8,4],[-17,14]],
+[[114,-22],[122,-18],[130,-12],[137,-12],[142,-11],[146,-19],[153,-26],[150,-37],[140,-38],[130,-32],[115,-34]],
+[[44,-25],[50,-15],[49,-12],[44,-17]],[[-5,50],[1,52],[-3,58],[-6,56]],[[130,32],[140,36],[142,44],[136,36]],[[95,5],[104,-5],[106,-6],[98,2]],[[109,1],[118,7],[117,-3]]];
+const mc=document.createElement("canvas");mc.width=720;mc.height=360;const x2=mc.getContext("2d");x2.fillStyle="#000";
+MAP.forEach(p=>{x2.beginPath();p.forEach(([lo,la],i)=>{const X=(lo+180)/2,Y=(90-la)*2;i?x2.lineTo(X,Y):x2.moveTo(X,Y)});x2.closePath();x2.fill()});
+const px=x2.getImageData(0,0,720,360).data,land=[],N=18000;
+for(let i=0;i<N;i++){const y=1-2*(i+.5)/N,q=Math.sqrt(1-y*y),h=i*2.399963,la=Math.asin(y)*180/Math.PI;let lo=Math.atan2(Math.cos(h)*q,Math.sin(h)*q)*180/Math.PI;lo=Math.atan2(Math.sin(h)*q,Math.cos(h)*q)*180/Math.PI;
+ const X=Math.min(719,Math.floor((lo+180)/2)),Y=Math.min(359,Math.floor((90-la)*2));if(px[(Y*720+X)*4+3]>128){const v=ll(la,lo,1.004);land.push(v.x,v.y,v.z)}}
+const dc=document.createElement("canvas");dc.width=dc.height=32;const d2=dc.getContext("2d");d2.fillStyle="#fff";d2.beginPath();d2.arc(16,16,15,0,7);d2.fill();
+const pg=new T.BufferGeometry();pg.setAttribute("position",new T.Float32BufferAttribute(land,3));
+G.add(new T.Points(pg,new T.PointsMaterial({color:0x1f5d4a,size:.022,map:new T.CanvasTexture(dc),alphaTest:.5})));
 
-  if (languageSelect) {
-    let savedLanguage = null;
-    try {
-      savedLanguage = localStorage.getItem(storageKey);
-    } catch (error) {
-      console.warn('Unable to read the saved language preference.', error);
-    }
+/* routes from Uganda */
+const U=ll(1.3,32.6,1.005),routes=[];
+[[51.5,-.1],[41,29],[25.2,55.3],[-26.2,28],[40.7,-74],[19,72.8],[30,31],[-33.9,151.2],[-23.5,-46.6],[35.7,139.7]].forEach(([la,lo])=>{
+ const b=ll(la,lo,1.005),m=U.clone().add(b).normalize().multiplyScalar(1+U.distanceTo(b)*.38),cu=new T.QuadraticBezierCurve3(U,m,b);
+ G.add(new T.Line(new T.BufferGeometry().setFromPoints(cu.getPoints(60)),new T.LineBasicMaterial({color:0xd2552b,transparent:true,opacity:.75})));
+ const dot=new T.Mesh(new T.SphereGeometry(.018,12,10),new T.MeshBasicMaterial({color:0xd2552b}));dot.position.copy(b);G.add(dot);
+ const tr=new T.Mesh(new T.SphereGeometry(.014,12,10),new T.MeshBasicMaterial({color:0xf2b84b}));G.add(tr);routes.push({cu,tr,o:Math.random(),s:.12+Math.random()*.12})});
+const pin=new T.Mesh(new T.SphereGeometry(.032,20,16),new T.MeshBasicMaterial({color:0xd2552b}));pin.position.copy(U);G.add(pin);
+const pr=new T.Mesh(new T.RingGeometry(.04,.05,48),new T.MeshBasicMaterial({color:0xd2552b,transparent:true,side:T.DoubleSide}));pr.position.copy(U);pr.lookAt(U.clone().multiplyScalar(2));G.add(pr);
 
-    const browserLanguage = (navigator.languages || [navigator.language])
-      .map((language) => language.toLowerCase().split('-')[0])
-      .find((language) => supportedLanguages.includes(language));
-    const initialLanguage = supportedLanguages.includes(savedLanguage)
-      ? savedLanguage
-      : browserLanguage || 'en';
-
-    languageSelect.value = initialLanguage;
-    applyLanguage(initialLanguage);
-
-    languageSelect.addEventListener('change', () => {
-      const language = supportedLanguages.includes(languageSelect.value)
-        ? languageSelect.value
-        : 'en';
-      applyLanguage(language);
-      try {
-        localStorage.setItem(storageKey, language);
-      } catch (error) {
-        console.warn('Unable to save the language preference.', error);
-      }
-    });
-  }
-
-  const slideshow = document.querySelector('.slideshow');
-  if (!slideshow) {
-    return;
-  }
-
-  const slides = Array.from(slideshow.querySelectorAll('img'));
-  if (slides.length < 2) {
-    return;
-  }
-
-  let currentSlide = 0;
-  const showSlide = (index) => {
-    slides.forEach((slide, slideIndex) => {
-      const isActive = slideIndex === index;
-      slide.classList.toggle('active', isActive);
-      slide.setAttribute('aria-hidden', String(!isActive));
-    });
-  };
-
-  showSlide(currentSlide);
-  setInterval(() => {
-    currentSlide = (currentSlide + 1) % slides.length;
-    showSlide(currentSlide);
-  }, 3000);
-});
+const keys=[[32,5],[10,35],[80,25],[-70,10],[32,5]];let W=1,H=1,k=1;
+function size(){W=cv.clientWidth||innerWidth;H=cv.clientHeight||innerHeight;R.setPixelRatio(Math.min(devicePixelRatio||1,W<700?1.6:2));R.setSize(W,H,false);C.aspect=W/H;C.updateProjectionMatrix();
+ k=2*7*Math.tan(35*Math.PI/360)/H;const rad=Math.min(H*.44,W*.62);G.scale.setScalar(rad*k);G.position.set((W>H*1.1?W*.2:0)*k,(W>H*1.1?0:H*.1)*k,0)}
+const tg={x:0,y:0},ptr={x:0,y:0};let t=0,kick=0,cur=0,curX=.1,last=performance.now(),on=false,pt=-9;const root=document.documentElement;
+const setP=(x,y)=>{tg.x=x/innerWidth*2-1;tg.y=-(y/innerHeight*2-1);on=true;pt=t};
+addEventListener("pointermove",e=>setP(e.clientX,e.clientY),{passive:true});addEventListener("touchmove",e=>{const q=e.touches[0];if(q)setP(q.clientX,q.clientY)},{passive:true});
+addEventListener("pointerdown",e=>{setP(e.clientX,e.clientY);kick=3},{passive:true});addEventListener("resize",size);
+function frame(now){requestAnimationFrame(frame);if(document.hidden)return;const dt=Math.min((now-last)/1000,.05)*(reduce?.3:1);last=now;t+=dt;
+ if(!on||t-pt>3){tg.x=Math.sin(t*.8)*.7;tg.y=Math.cos(t*.6)*.5}ptr.x+=(tg.x-ptr.x)*.1;ptr.y+=(tg.y-ptr.y)*.1;
+ root.style.setProperty("--px",ptr.x.toFixed(3));root.style.setProperty("--py",ptr.y.toFixed(3));
+ const sp=root.scrollHeight-innerHeight,p=Math.max(0,Math.min(1,sp>0?scrollY/sp:0))*(keys.length-1),i=Math.min(keys.length-2,Math.floor(p)),f=p-i,e=f*f*(3-2*f);
+ const lon=keys[i][0]+(keys[i+1][0]-keys[i][0])*e,lat=keys[i][1]+(keys[i+1][1]-keys[i][1])*e;
+ kick*=.95;const yaw=-lon*Math.PI/180+Math.sin(t*.55)*.5+ptr.x*.6+kick*Math.sin(t*6)*.15+t*.0;
+ cur+=(yaw-cur)*.07;curX+=(lat*Math.PI/180*.8+.12+ptr.y*.25-curX)*.07;G.rotation.set(curX,cur,0);
+ routes.forEach(r=>{r.o=(r.o+dt*r.s*(1+kick))%1;r.tr.position.copy(r.cu.getPoint(r.o))});
+ const q=(t*.8)%1;pr.scale.setScalar(1+q*3);pr.material.opacity=.8*(1-q);R.render(S,C)}
+size();requestAnimationFrame(frame)}})();
